@@ -27,6 +27,18 @@ describe('CounterComponent', () => {
     htmlElement = debugElement.nativeElement;
   });
 
+  it('should increment the counter number by one', () => {
+    //Arrange
+    const initialValue = component.counter;
+
+    //Act
+    component.increment();
+    const newValue = component.counter;
+
+    //Assert
+    expect(newValue).toBeGreaterThan(initialValue);
+  })
+
   it('should display the current nomber of the counter', () => {
     // expect(component).toBeTruthy();
     expect(htmlElement.textContent).toEqual('Number: 1')
