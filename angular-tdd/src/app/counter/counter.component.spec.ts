@@ -33,13 +33,46 @@ describe('CounterComponent', () => {
 
     //Act
     component.increment();
+
+    fixture.detectChanges();
     const newValue = component.counter;
 
     //Assert
     expect(newValue).toBeGreaterThan(initialValue);
   })
+  it('should decrement the counter number by one', () => {
+    //Arrange
+    const initialValue = component.counter;
 
-  it('should display the current nomber of the counter', () => {
+    //Act
+    component.decrement();
+
+    fixture.detectChanges();
+    const newValue = component.counter;
+
+    //Assert
+    expect(newValue).toBeLessThan(initialValue);
+  })
+
+  it('should display the counter number on screen, after being incremented by one', () => {
+    // expect(component).toBeTruthy();
+    component.increment()
+    fixture.detectChanges();
+
+    //Assert
+    expect(htmlElement.textContent).toEqual('Number: 2')
+  });
+
+  it('should display the counter number on screen, after being decremented by one', () => {
+    // expect(component).toBeTruthy();
+    component.decrement()
+    fixture.detectChanges();
+
+    //Assert
+    expect(htmlElement.textContent).toEqual('Number: 0')
+  });
+
+  it('should display the current number of the counter', () => {
     // expect(component).toBeTruthy();
     expect(htmlElement.textContent).toEqual('Number: 1')
   });
